@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  health: 5
+  health: 3
   sprites:
   - {fileID: 156833522, guid: 57564a374edcf564296515874b70b1fd, type: 3}
   - {fileID: 28562049, guid: 57564a374edcf564296515874b70b1fd, type: 3}

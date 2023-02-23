@@ -32,9 +32,10 @@ public class Item : MonoBehaviour
             if (this.gameObject.tag == "PowerItem")
             {
                 Player P = player.GetComponent<Player>();
+                Destroy(gameObject);
                 P.power += 1;
                 if (P.power > 3) P.power = 3;
-                Destroy(gameObject);
+                
             }
 
             if (this.gameObject.tag == "CoinItem")
@@ -46,7 +47,7 @@ public class Item : MonoBehaviour
             if (this.gameObject.tag == "BoomItem")
             {
                 GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
-                Debug.Log(enemys[0]);
+                
                 for (int i = 0; i < enemys.Length; i++)
                 {
                     Destroy(enemys[i]);
@@ -61,28 +62,4 @@ public class Item : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-   
-    /*
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            if (this.gameObject.name == "Power")
-            {
-                Player P = player.GetComponent<Player>();
-                P.power += 1;
-                if (P.power > 3) P.power = 3;
-                Destroy(this);
-            }
-
-            if (this.gameObject.name == "Coin")
-            {
-                GameManager.instance.gameScore += 777;
-                Destroy(this);
-            }
-        }
-    }
-    */
-
 }

@@ -170,7 +170,7 @@ public class Player : MonoBehaviour
             {
                 gmLogic.RespawnPlayer();
             }
-            //gameObject.SetActive(false);
+
         }
     }
 

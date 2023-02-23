@@ -106,6 +106,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             GameManager.instance.gameScore += collisionscore;
+            GameManager.instance.MakeItem(gameObject);
         }
     }
 

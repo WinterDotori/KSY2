@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -65,13 +70,20 @@ public class GameManager : MonoBehaviour
         int ranNumb = Random.Range(0, 2);
         GameObject item = Instantiate(Items[ranNum],
             spawnPoints[ranNumb].position, Quaternion.identity);
-        Item itemLogic = item.GetComponent<Item>();
-        //itemLogic.Move();
+
+    }
+
+    public void MakeItem(GameObject enemy)
+    {
+        int ranNum = Random.Range(0, Items.Length);
+        GameObject item = Instantiate(Items[ranNum],
+            enemy.transform.position, Quaternion.identity);
+
     }
 
     public void GameOver()
     {
-        
+        Time.timeScale = 0;
     }
 
     public void RespawnPlayer()
@@ -84,7 +96,12 @@ public class GameManager : MonoBehaviour
         player.transform.position = Vector3.down * 4.2f;
         player.SetActive(true);
         Player playrLogic = player.GetComponent<Player>();
-        playrLogic.isHit = false;
-        
+        player.GetComponent<PolygonCollider2D>().enabled = false;
+        Invoke("collider_turnon", 3.0f);
+    }
+
+    void collider_turnon()
+    {
+        player.GetComponent<PolygonCollider2D>().enabled = true;
     }
 }
